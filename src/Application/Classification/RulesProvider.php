@@ -6,6 +6,7 @@ namespace App\Application\Classification;
 
 use Symfony\Component\Yaml\Yaml;
 
+/** new */
 class RulesProvider
 {
     private ?Rules $rules = null;

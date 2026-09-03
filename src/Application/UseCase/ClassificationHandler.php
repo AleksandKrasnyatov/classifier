@@ -8,6 +8,7 @@ use App\Application\Classification\RulesProvider;
 use Cel\CommonExpressionLanguage;
 use DomainException;
 
+/** new */
 final readonly class ClassificationHandler
 {
     public function __construct(

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Application\UseCase;
 
-final class ClassificationResponse
+/** new */
+final readonly class ClassificationResponse
 {
     public function __construct(
-        public readonly string $queue,
-        public readonly string $priority,
-        public readonly int $responseTargetMinutes,
-        public readonly string $ruleId,
-        public readonly string $rulesVersion,
+        public string $queue,
+        public string $priority,
+        public int $responseTargetMinutes,
+        public string $ruleId,
+        public string $rulesVersion,
     ) {
     }
 

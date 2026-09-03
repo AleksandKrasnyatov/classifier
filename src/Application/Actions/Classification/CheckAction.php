@@ -10,6 +10,7 @@ use App\Application\UseCase\ClassificationRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Log\LoggerInterface;
 
+/** new */
 final class CheckAction extends Action
 {
     public function __construct(
@@ -33,6 +34,6 @@ final class CheckAction extends Action
 
         $classificationResponse = ($this->handler)($classificationRequest);
 
-        return $this->respondWithData($classificationResponse);
+        return $this->respondWithData($classificationResponse->toArray());
     }
 }

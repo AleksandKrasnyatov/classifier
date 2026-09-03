@@ -27,6 +27,7 @@ return function (ContainerBuilder $containerBuilder) {
 
             return $logger;
         },
+        /** new */
         RulesProvider::class => new RulesProvider(__DIR__ . '/../rules.yml'),
     ]);
 };

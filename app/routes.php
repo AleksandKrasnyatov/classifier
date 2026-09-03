@@ -17,6 +17,7 @@ return function (App $app) {
         return $response;
     });
 
+    /** new */
     $app->post('/', CheckAction::class);
 
     $app->group('/users', function (Group $group) {

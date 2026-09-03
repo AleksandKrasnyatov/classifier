@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Classification;
 
+/** new */
 final class Then
 {
     public function __construct(

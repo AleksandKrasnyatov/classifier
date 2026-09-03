@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace App\Application\UseCase;
 
-final class ClassificationRequest
+/** new */
+final readonly class ClassificationRequest
 {
     public function __construct(
-        public readonly string $channel,
-        public readonly string $customerTier,
-        public readonly string $country,
-        public readonly string $subject,
-        public readonly array $tags,
-        public readonly int $customerAgeDays,
+        public string $channel,
+        public string $customerTier,
+        public string $country,
+        public string $subject,
+        public array $tags,
+        public int $customerAgeDays,
     ) {
     }
 

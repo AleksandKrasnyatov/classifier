@@ -6,6 +6,7 @@ namespace App\Application\Classification;
 
 use DateTimeInterface;
 
+/** new */
 final class Rules
 {
     /**
