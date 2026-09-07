@@ -1,0 +1,42 @@
+version: 2026-07-23T00:00:00Z
+rules:
+  - id: premium_payment_incident
+    when: >-
+      customer_tier == "premium"
+      && tags.exists(tag, tag == "payment")
+    then:
+      queue: payments-l2
+      priority: high
+      response_target_minutes: 15
+
+  - id: urgent_security_ticket
+    when: >-
+      tags.exists(tag, tag == "account_takeover")
+      || subject.lowerAscii().contains("hacked")
+    then:
+      queue: security-response
+      priority: critical
+      response_target_minutes: 5
+
+  - id: new_customer_onboarding
+    when: >-
+      customer_age_days < 30
+      && tags.exists(tag, tag == "onboarding")
+    then:
+      queue: onboarding
+      priority: normal
+      response_target_minutes: 120
+
+  - id: mexico_spanish_queue
+    when: country == "MX" && channel in ["email", "chat"]
+    then:
+      queue: latam-es
+      priority: normal
+      response_target_minutes: 240
+
+  - id: global_default
+    when: "true"
+    then:
+      queue: general
+      priority: normal
+      response_target_minutes: 480

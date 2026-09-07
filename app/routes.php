@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Application\Actions\Classification\CheckAction;
 use App\Application\Actions\User\ListUsersAction;
 use App\Application\Actions\User\ViewUserAction;
-use App\Infrastructure\Http\HomeAction;
+use App\Infrastructure\Http\Classification\CheckAction;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;

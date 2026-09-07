@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Actions\Classification;
+namespace App\Infrastructure\Http\Classification;
 
 use App\Application\Actions\Action;
 use App\Application\UseCase\ClassificationHandler;

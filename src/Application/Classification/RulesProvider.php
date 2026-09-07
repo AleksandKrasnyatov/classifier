@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Classification;
 
+use RuntimeException;
 use Symfony\Component\Yaml\Yaml;
 
 /** new */
@@ -28,7 +29,7 @@ class RulesProvider
     private function getRawRules(): array
     {
         if (!file_exists($this->yamlFilePath)) {
-            throw new \RuntimeException("YAML rules file not found: {$this->yamlFilePath}");
+            throw new RuntimeException("YAML rules file not found: {$this->yamlFilePath}");
         }
 
         $yamlContent = file_get_contents($this->yamlFilePath);
