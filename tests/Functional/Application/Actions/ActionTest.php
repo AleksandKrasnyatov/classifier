@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Application\Actions;
+namespace Functional\Application\Actions;
 
 use App\Application\Actions\Action;
 use App\Application\Actions\ActionPayload;

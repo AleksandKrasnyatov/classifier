@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Application\Actions\User;
+namespace Functional\Application\Actions\User;
 
 use App\Application\Actions\ActionPayload;
-use App\Domain\User\UserRepository;
 use App\Domain\User\User;
+use App\Domain\User\UserRepository;
 use DI\Container;
 use Tests\TestCase;
 

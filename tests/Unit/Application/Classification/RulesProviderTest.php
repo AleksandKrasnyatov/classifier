@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Application\Classification;
+namespace Tests\Unit\Application\Classification;
 
 use App\Application\Classification\Rule;
 use App\Application\Classification\Rules;
@@ -16,7 +16,7 @@ class RulesProviderTest extends TestCase
      */
     public function givenCorrectRulesConfigWhenUseServiceThenCanGetCorrectRules(): void
     {
-        $rulesProvider = new RulesProvider(__DIR__ . '/../../Fixture/Classification/test-rules.yml');
+        $rulesProvider = new RulesProvider(__DIR__ . '/../../../Fixture/Classification/test-rules.yml');
 
         $expected = new Rules('2026-07-23T00:00:00Z', [
             new Rule(

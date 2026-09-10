@@ -9,6 +9,7 @@ use App\Application\UseCase\ClassificationHandler;
 use App\Application\UseCase\ClassificationRequest;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Log\LoggerInterface;
+use Throwable;
 
 /** new */
 final class CheckAction extends Action
@@ -22,18 +23,22 @@ final class CheckAction extends Action
 
     protected function action(): Response
     {
-        $body = $this->getFormData();
-        $classificationRequest = new ClassificationRequest(
-            $body['channel'],
-            $body['customer_tier'],
-            $body['country'],
-            $body['subject'],
-            $body['tags'],
-            $body['customer_age_days'],
-        );
+        try {
+            $body = $this->getFormData();
+            $classificationRequest = new ClassificationRequest(
+                $body['channel'],
+                $body['customer_tier'],
+                $body['country'],
+                $body['subject'],
+                $body['tags'],
+                $body['customer_age_days'],
+            );
 
-        $classificationResponse = ($this->handler)($classificationRequest);
+            $classificationResponse = ($this->handler)($classificationRequest);
 
-        return $this->respondWithData($classificationResponse->toArray());
+            return $this->respondWithData($classificationResponse->toArray());
+        } catch (Throwable $exception) {
+            return $this->respondWithData(['exception' => $exception->getMessage()], 500);
+        }
     }
 }

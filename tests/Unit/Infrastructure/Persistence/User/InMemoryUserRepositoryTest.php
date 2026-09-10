@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Infrastructure\Persistence\User;
+namespace Tests\Unit\Infrastructure\Persistence\User;
 
 use App\Domain\User\User;
 use App\Domain\User\UserNotFoundException;

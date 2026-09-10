@@ -12,7 +12,7 @@ rules:
   - id: urgent_security_ticket
     when: >-
       tags.exists(tag, tag == "account_takeover")
-      || subject.lowerAscii().contains("hacked")
+      || subject.contains("hacked")
     then:
       queue: security-response
       priority: critical
