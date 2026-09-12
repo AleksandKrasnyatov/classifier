@@ -15,8 +15,10 @@ class CheckActionTest extends TestCase
      * @dataProvider incorrectCases
      * @throws Exception
      */
-    public function givenRequestWithIncorrectStructureWhenRequestClassificationThenSeeExceptionCode(array $in, int $code): void
-    {
+    public function givenRequestWithIncorrectStructureWhenRequestClassificationThenSeeExceptionCode(
+        array $in,
+        int $code
+    ): void {
         $app = $this->getAppInstance();
         $request = $this->createRequest('POST', '/')
             ->withHeader('Content-Type', 'application/json')
@@ -25,7 +27,6 @@ class CheckActionTest extends TestCase
         $response = $app->handle($request);
 
         $this->assertEquals($code, $response->getStatusCode());
-
     }
 
     /**
@@ -33,8 +34,10 @@ class CheckActionTest extends TestCase
      * @dataProvider successCases
      * @throws Exception
      */
-    public function givenRequestWithCorrectStructureWhenRequestClassificationThenSeeExpectedResponse(array $in, array $out): void
-    {
+    public function givenRequestWithCorrectStructureWhenRequestClassificationThenSeeExpectedResponse(
+        array $in,
+        array $out
+    ): void {
         $app = $this->getAppInstance();
         $request = $this->createRequest('POST', '/')
             ->withHeader('Content-Type', 'application/json')
