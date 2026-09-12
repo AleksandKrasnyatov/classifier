@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Application\UseCase;
 
+use App\Application\Classification\Checker;
 use App\Application\Classification\RulesProvider;
-use Cel\CommonExpressionLanguage;
 use DomainException;
 
 /** new */
@@ -13,7 +13,7 @@ final readonly class ClassificationHandler
 {
     public function __construct(
         private RulesProvider $rulesProvider,
-        private CommonExpressionLanguage $cle
+        private Checker $checker
     ) {
     }
 
@@ -22,9 +22,7 @@ final readonly class ClassificationHandler
         $context = $classificationRequest->toArray();
         $rules = $this->rulesProvider->getRules();
         foreach ($rules->rules as $rule) {
-            $compiledExpr = $this->cle->parseString($rule->when);
-            $receipt = $this->cle->run($compiledExpr, $context);
-            if ($receipt->result->getRawValue() === true) {
+            if ($this->checker->check($rule, $context)) {
                 return new ClassificationResponse(
                     queue: $rule->then->queue,
                     priority: $rule->then->priority,
